@@ -49,7 +49,7 @@ namespace stm32plus {
      */
 
     template<class TPinPackage>
-    inline Gpio16BitAccessMode<TPinPackage,COLOURS_16BIT,24,80,80>::Gpio16BitAccessMode() {
+    inline Gpio16BitAccessMode<TPinPackage,COLOURS_16BIT,24,80,80>::Gpio16BitAccessMode() : _jump(0){
 
       // the assembly code needs these
 
@@ -203,7 +203,7 @@ namespace stm32plus {
      */
 
     template<class TPinPackage>
-    __attribute__((noinline)) inline void Gpio16BitAccessMode<TPinPackage,COLOURS_16BIT,24,80,80>::writeMultiData(uint32_t howMuch,uint16_t value) const {
+    __attribute__((noinline)) /*inline*/ void Gpio16BitAccessMode<TPinPackage,COLOURS_16BIT,24,80,80>::writeMultiData(uint32_t howMuch,uint16_t value) const {
 
       __asm volatile(
           "    str  %[value],   [%[data]]                 \n\t"     // port <= value

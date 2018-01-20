@@ -70,6 +70,10 @@
   #define STM32PLUS_F4_HAS_DAC
   #define STM32PLUS_F4_HAS_FSMC
 
+#elif defined(STM32PLUS_F410)
+  #define STM32PLUS_F4
+  #define STM32F410xx
+
 #elif defined(STM32PLUS_F415)
   #define STM32PLUS_F4
   #define STM32F415xx

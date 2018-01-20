@@ -48,7 +48,7 @@ namespace stm32plus {
      */
 
     template<class TPinPackage>
-    inline Gpio16BitAccessMode<TPinPackage,COLOURS_16BIT,48,42,42>::Gpio16BitAccessMode() {
+    inline Gpio16BitAccessMode<TPinPackage,COLOURS_16BIT,48,42,42>::Gpio16BitAccessMode() : _jump(0) {
 
       // the assembly code needs these
 
@@ -202,7 +202,7 @@ namespace stm32plus {
      */
 
     template<class TPinPackage>
-    __attribute__((noinline)) inline void Gpio16BitAccessMode<TPinPackage,COLOURS_16BIT,48,42,42>::writeMultiData(uint32_t howMuch,uint16_t value) const {
+    __attribute__((noinline)) /*inline*/ void Gpio16BitAccessMode<TPinPackage,COLOURS_16BIT,48,42,42>::writeMultiData(uint32_t howMuch,uint16_t value) const {
 
       // F0 compatibility : value, data, rs are only needed at the start so move
       // them to own asm section so gcc doesn't have to find so many registers

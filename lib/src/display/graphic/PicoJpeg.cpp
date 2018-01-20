@@ -276,6 +276,7 @@ namespace stm32plus {
       }
     }
   //------------------------------------------------------------------------------
+#pragma GCC diagnostic ignored "-Wshift-negative-value"
     static int16_t getExtendOffset(uint8_t i) {
       switch(i) {
         case 0:
@@ -719,7 +720,7 @@ namespace stm32plus {
           }
         }
       }
-  //   return 0;
+     return 0; // было ранее закомментировано
     }
   //------------------------------------------------------------------------------
   // Finds the start of image (SOI) marker.
@@ -1425,6 +1426,7 @@ namespace stm32plus {
               break;
             }
           }
+          break;
         }
 
         default:
