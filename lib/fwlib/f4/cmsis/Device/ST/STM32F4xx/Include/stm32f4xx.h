@@ -56,7 +56,12 @@
 #ifdef __cplusplus
  extern "C" {
 #endif /* __cplusplus */
-  
+
+ /* stm32plus addition */
+
+ #define assert_param(expr) ((void)0)
+ #include "config/mcu_defines.h"
+
 /** @addtogroup Library_configuration_section
   * @{
   */
