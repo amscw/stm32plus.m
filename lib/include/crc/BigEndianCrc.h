@@ -5,7 +5,7 @@
  */
 
 #pragma once
-
+#undef BIG_ENDIAN
 
 namespace stm32plus {
 
