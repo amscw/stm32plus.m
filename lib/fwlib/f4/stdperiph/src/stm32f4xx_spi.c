@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32f4xx_spi.c
   * @author  MCD Application Team
-  * @version V1.4.0
-  * @date    04-August-2014
+  * @version V1.8.0
+  * @date    04-November-2016
   * @brief   This file provides firmware functions to manage the following 
   *          functionalities of the Serial peripheral interface (SPI):
   *           + Initialization and Configuration
@@ -93,7 +93,7 @@
               
       (#) Configure SPIx in I2S mode (I2S_Init() function) as described above. 
              
-      (#) Call the I2S_FullDuplexConfig() function using the same strucutre passed to  
+      (#) Call the I2S_FullDuplexConfig() function using the same structure passed to  
           I2S_Init() function.
               
       (#) Call I2S_Cmd() for SPIx then for its extended block.
@@ -138,7 +138,7 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT 2014 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT 2016 STMicroelectronics</center></h2>
   *
   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
   * You may not use this file except in compliance with the License.
@@ -156,8 +156,8 @@
   */ 
 
 /* Includes ------------------------------------------------------------------*/
-#include "fwlib/f4/stdperiph/inc/stm32f4xx_spi.h"
-#include "fwlib/f4/stdperiph/inc/stm32f4xx_rcc.h"
+#include "stm32f4xx_spi.h"
+#include "stm32f4xx_rcc.h"
 
 /** @addtogroup STM32F4xx_StdPeriph_Driver
   * @{
@@ -179,10 +179,7 @@
 #define PLLCFGR_PPLR_MASK         ((uint32_t)0x70000000)
 #define PLLCFGR_PPLN_MASK         ((uint32_t)0x00007FC0)
 
-#if 0   // it's in CMSIS for the F4
 #define SPI_CR2_FRF               ((uint16_t)0x0010)
-#endif
-
 #define SPI_SR_TIFRFE             ((uint16_t)0x0100)
 
 /* Private macro -------------------------------------------------------------*/
@@ -250,17 +247,13 @@ void SPI_I2S_DeInit(SPI_TypeDef* SPIx)
     /* Release SPI3 from reset state */
     RCC_APB1PeriphResetCmd(RCC_APB1Periph_SPI3, DISABLE);
   }
-
-#if defined(STM32PLUS_F401) || defined(STM32PLUS_F427) || defined(STM32PLUS_F429) || defined(STM32PLUS_F437) || defined(STM32PLUS_F439)
-  if (SPIx == SPI4)
+  else if (SPIx == SPI4)
   {
     /* Enable SPI4 reset state */
     RCC_APB2PeriphResetCmd(RCC_APB2Periph_SPI4, ENABLE);
     /* Release SPI4 from reset state */
     RCC_APB2PeriphResetCmd(RCC_APB2Periph_SPI4, DISABLE);
   }
-
-#if defined(STM32PLUS_F427) || defined(STM32PLUS_F429) || defined(STM32PLUS_F437) || defined(STM32PLUS_F439)
   else if (SPIx == SPI5)
   {
     /* Enable SPI5 reset state */
@@ -278,9 +271,6 @@ void SPI_I2S_DeInit(SPI_TypeDef* SPIx)
       RCC_APB2PeriphResetCmd(RCC_APB2Periph_SPI6, DISABLE);
     }
   }
-#endif
-#endif
-
 }
 
 /**
@@ -351,7 +341,7 @@ void SPI_Init(SPI_TypeDef* SPIx, SPI_InitTypeDef* SPI_InitStruct)
   * 
   * @note   if an external clock is used as source clock for the I2S, then the define
   *         I2S_EXTERNAL_CLOCK_VAL in file stm32f4xx_conf.h should be enabled and set
-  *         to the value of the the source clock frequency (in Hz).
+  *         to the value of the source clock frequency (in Hz).
   *  
   * @retval None
   */
@@ -485,8 +475,16 @@ void I2S_Init(SPI_TypeDef* SPIx, I2S_InitTypeDef* I2S_InitStruct)
                   (uint16_t)(I2S_InitStruct->I2S_Standard | (uint16_t)(I2S_InitStruct->I2S_DataFormat | \
                   (uint16_t)I2S_InitStruct->I2S_CPOL))));
  
+#if defined(SPI_I2SCFGR_ASTRTEN)
+  if((I2S_InitStruct->I2S_Standard  == I2S_Standard_PCMShort) || (I2S_InitStruct->I2S_Standard  == I2S_Standard_PCMLong))
+  {
+    /* Write to SPIx I2SCFGR */  
+    SPIx->I2SCFGR = tmpreg | SPI_I2SCFGR_ASTRTEN;
+  }
+#else
   /* Write to SPIx I2SCFGR */  
-  SPIx->I2SCFGR = tmpreg;
+  SPIx->I2SCFGR = tmpreg ;
+#endif 
 }
 
 /**
@@ -735,7 +733,7 @@ void SPI_TIModeCmd(SPI_TypeDef* SPIx, FunctionalState NewState)
   *         used for the master I2S peripheral. In this case, if the master is 
   *         configured as transmitter, the slave will be receiver and vice versa.
   *         Or you can force a different mode by modifying the field I2S_Mode to the
-  *         value I2S_SlaveRx or I2S_SlaveTx indepedently of the master configuration.    
+  *         value I2S_SlaveRx or I2S_SlaveTx independently of the master configuration.    
   *         
   * @note   The I2S full duplex extension can be configured in slave mode only.    
   *  

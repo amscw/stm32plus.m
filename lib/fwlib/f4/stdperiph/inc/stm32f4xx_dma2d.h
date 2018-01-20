@@ -2,14 +2,14 @@
   ******************************************************************************
   * @file    stm32f4xx_dma2d.h
   * @author  MCD Application Team
-  * @version V1.4.0
-  * @date    04-August-2014
+  * @version V1.8.0
+  * @date    04-November-2016
   * @brief   This file contains all the functions prototypes for the DMA2D firmware 
   *          library.
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT 2014 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT 2016 STMicroelectronics</center></h2>
   *
   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
   * You may not use this file except in compliance with the License.
@@ -27,16 +27,15 @@
   */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#pragma once
+#ifndef __STM32F4xx_DMA2D_H
+#define __STM32F4xx_DMA2D_H
 
 #ifdef __cplusplus
  extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
-#include "fwlib/f4/cmsis/Device/ST/STM32F4xx/Include/stm32f4xx.h"
-
-#if defined(STM32PLUS_F4_HAS_DMA2D)
+#include "stm32f4xx.h"
 
 /** @addtogroup STM32F4xx_StdPeriph_Driver
   * @{
@@ -70,11 +69,11 @@ typedef struct
 
   uint32_t DMA2D_OutputGreen;                    /*!< configures the green value of the output image. 
                                                  This parameter must range:
-                                                 - from 0x00 to 0xFF if ARGB8888 color mode is slected
-                                                 - from 0x00 to 0xFF if RGB888 color mode is slected
-                                                 - from 0x00 to 0x2F if RGB565 color mode is slected
-                                                 - from 0x00 to 0x1F if ARGB1555 color mode is slected
-                                                 - from 0x00 to 0x0F if ARGB4444 color mode is slected  */
+                                                 - from 0x00 to 0xFF if ARGB8888 color mode is selected
+                                                 - from 0x00 to 0xFF if RGB888 color mode is selected
+                                                 - from 0x00 to 0x2F if RGB565 color mode is selected
+                                                 - from 0x00 to 0x1F if ARGB1555 color mode is selected
+                                                 - from 0x00 to 0x0F if ARGB4444 color mode is selected  */
             
   uint32_t DMA2D_OutputRed;                      /*!< configures the red value of the output image. 
                                                  This parameter must range:
@@ -86,9 +85,9 @@ typedef struct
   
   uint32_t DMA2D_OutputAlpha;                    /*!< configures the alpha channel of the output color. 
                                                  This parameter must range:
-                                                 - from 0x00 to 0xFF if ARGB8888 color mode is slected
-                                                 - from 0x00 to 0x01 if ARGB1555 color mode is slected
-                                                 - from 0x00 to 0x0F if ARGB4444 color mode is slected  */
+                                                 - from 0x00 to 0xFF if ARGB8888 color mode is selected
+                                                 - from 0x00 to 0x01 if ARGB1555 color mode is selected
+                                                 - from 0x00 to 0x0F if ARGB4444 color mode is selected  */
 
   uint32_t DMA2D_OutputMemoryAdd;                /*!< Specifies the memory address. This parameter 
                                                  must be range from 0x00000000 to 0xFFFFFFFF. */
@@ -99,7 +98,7 @@ typedef struct
   uint32_t DMA2D_NumberOfLine;                   /*!< Configures the number of line of the area to be transfered.
                                                  This parameter must range from 0x0000 to 0xFFFF */
             
-  uint32_t DMA2D_PixelPerLine;                   /*!< Configures the number pixel per line of the area to be transfered.
+  uint32_t DMA2D_PixelPerLine;                   /*!< Configures the number pixel per line of the area to be transferred.
                                                  This parameter must range from 0x0000 to 0x3FFF */
 } DMA2D_InitTypeDef;
 
@@ -459,11 +458,11 @@ void DMA2D_ClearFlag(uint32_t DMA2D_FLAG);
 ITStatus DMA2D_GetITStatus(uint32_t DMA2D_IT);
 void DMA2D_ClearITPendingBit(uint32_t DMA2D_IT);
 
-#endif
-
 #ifdef __cplusplus
 }
 #endif
+
+#endif /* __STM32F4xx_DMA2D_H */
 
 /**
   * @}
@@ -474,4 +473,3 @@ void DMA2D_ClearITPendingBit(uint32_t DMA2D_IT);
   */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
-

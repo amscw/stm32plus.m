@@ -2,14 +2,14 @@
   ******************************************************************************
   * @file    stm32f4xx_cryp.h
   * @author  MCD Application Team
-  * @version V1.4.0
-  * @date    04-August-2014
+  * @version V1.8.0
+  * @date    04-November-2016
   * @brief   This file contains all the functions prototypes for the Cryptographic
   *          processor(CRYP) firmware library.
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT 2014 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT 2016 STMicroelectronics</center></h2>
   *
   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
   * You may not use this file except in compliance with the License.
@@ -27,17 +27,15 @@
   */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#pragma once
+#ifndef __STM32F4xx_CRYP_H
+#define __STM32F4xx_CRYP_H
 
 #ifdef __cplusplus
  extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
-#include "fwlib/f4/cmsis/Device/ST/STM32F4xx/Include/stm32f4xx.h"
-
-#if defined(STM32PLUS_F4_HAS_CRYPTO)
-
+#include "stm32f4xx.h"
 
 /** @addtogroup STM32F4xx_StdPeriph_Driver
   * @{
@@ -369,11 +367,11 @@ ErrorStatus CRYP_DES_CBC(uint8_t Mode,
                          uint8_t *Input,uint32_t Ilength,
                          uint8_t *Output);
 
-#endif
-
 #ifdef __cplusplus
 }
 #endif
+
+#endif /*__STM32F4xx_CRYP_H */
 
 /**
   * @}
@@ -384,4 +382,3 @@ ErrorStatus CRYP_DES_CBC(uint8_t Mode,
   */ 
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
-

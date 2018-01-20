@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32f4xx_flash_ramfunc.c
   * @author  MCD Application Team
-  * @version V1.4.0
-  * @date    04-August-2014
+  * @version V1.8.0
+  * @date    04-November-2016
   * @brief   FLASH RAMFUNC module driver.
   *          This file provides a FLASH firmware functions which should be 
   *          executed from internal SRAM
@@ -37,7 +37,7 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT 2014 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT 2016 STMicroelectronics</center></h2>
   *
   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
   * You may not use this file except in compliance with the License.
@@ -55,7 +55,7 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
-#include "fwlib/f4/stdperiph/inc/stm32f4xx_flash_ramfunc.h"
+#include "stm32f4xx_flash_ramfunc.h"
 
 /** @addtogroup STM32F4xx_StdPeriph_Driver
   * @{
@@ -93,8 +93,6 @@
   * @{
   */
 
-
-#if defined(STM32PLUS_F411)
 /**
   * @brief Start/Stop the flash interface while System Run
   * @note  This mode is only available for STM32F411xx devices. 
@@ -140,7 +138,6 @@ __RAM_FUNC FLASH_FlashSleepModeCmd(FunctionalState NewState)
     CLEAR_BIT(PWR->CR, PWR_CR_FMSSR);
   }
 }
-#endif
 
 /**
   * @}

@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32f4xx_dcmi.c
   * @author  MCD Application Team
-  * @version V1.4.0
-  * @date    04-August-2014
+  * @version V1.8.0
+  * @date    04-November-2016
   * @brief   This file provides firmware functions to manage the following 
   *          functionalities of the DCMI peripheral:           
   *           + Initialization and Configuration
@@ -65,7 +65,7 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT 2014 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT 2016 STMicroelectronics</center></h2>
   *
   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
   * You may not use this file except in compliance with the License.
@@ -83,11 +83,8 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
-#include "fwlib/f4/stdperiph/inc/stm32f4xx_dcmi.h"
-#include "fwlib/f4/stdperiph/inc/stm32f4xx_rcc.h"
-
-#if defined(STM32PLUS_F4_HAS_DCMI)
-
+#include "stm32f4xx_dcmi.h"
+#include "stm32f4xx_rcc.h"
 
 /** @addtogroup STM32F4xx_StdPeriph_Driver
   * @{
@@ -539,5 +536,3 @@ void DCMI_ClearITPendingBit(uint16_t DCMI_IT)
   */ 
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
-
-#endif

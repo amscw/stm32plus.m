@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32f4xx_usart.c
   * @author  MCD Application Team
-  * @version V1.4.0
-  * @date    04-August-2014
+  * @version V1.8.0
+  * @date    04-November-2016
   * @brief   This file provides firmware functions to manage the following 
   *          functionalities of the Universal synchronous asynchronous receiver
   *          transmitter (USART):           
@@ -71,7 +71,7 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT 2014 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT 2016 STMicroelectronics</center></h2>
   *
   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
   * You may not use this file except in compliance with the License.
@@ -89,8 +89,8 @@
   */ 
 
 /* Includes ------------------------------------------------------------------*/
-#include "fwlib/f4/stdperiph/inc/stm32f4xx_usart.h"
-#include "fwlib/f4/stdperiph/inc/stm32f4xx_rcc.h"
+#include "stm32f4xx_usart.h"
+#include "stm32f4xx_rcc.h"
 
 /** @addtogroup STM32F4xx_StdPeriph_Driver
   * @{
@@ -219,7 +219,6 @@ void USART_DeInit(USART_TypeDef* USARTx)
     RCC_APB2PeriphResetCmd(RCC_APB2Periph_USART6, ENABLE);
     RCC_APB2PeriphResetCmd(RCC_APB2Periph_USART6, DISABLE);
   }
-#if defined(STM32PLUS_F437) || defined(STM32PLUS_F427) || defined(STM32PLUS_F429) || defined(STM32PLUS_F439)
   else if (USARTx == UART7)
   {
     RCC_APB1PeriphResetCmd(RCC_APB1Periph_UART7, ENABLE);
@@ -233,8 +232,6 @@ void USART_DeInit(USART_TypeDef* USARTx)
       RCC_APB1PeriphResetCmd(RCC_APB1Periph_UART8, DISABLE);
     }
   }
-#endif
-
 }
 
 /**
