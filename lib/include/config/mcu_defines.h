@@ -55,6 +55,7 @@
   #define STM32PLUS_F4_HAS_OTG_HS
   #define STM32PLUS_F4_HAS_DAC
   #define STM32PLUS_F4_HAS_FSMC
+  #define STM32PLUS_F4_HAS_SDIO
 
 #elif defined(STM32PLUS_F407)
   #define STM32PLUS_F4
@@ -71,6 +72,7 @@
   #define STM32PLUS_F4_HAS_OTG_HS
   #define STM32PLUS_F4_HAS_DAC
   #define STM32PLUS_F4_HAS_FSMC
+  #define STM32PLUS_F4_HAS_SDIO
 
 #elif defined(STM32PLUS_F410)
   #define STM32PLUS_F4
@@ -91,6 +93,7 @@
   #define STM32PLUS_F4_HAS_OTG_HS
   #define STM32PLUS_F4_HAS_DAC
   #define STM32PLUS_F4_HAS_FSMC
+  #define STM32PLUS_F4_HAS_SDIO
 
 #elif defined(STM32PLUS_F417)
   #define STM32PLUS_F4
@@ -108,6 +111,7 @@
   #define STM32PLUS_F4_HAS_OTG_HS
   #define STM32PLUS_F4_HAS_DAC
   #define STM32PLUS_F4_HAS_FSMC
+  #define STM32PLUS_F4_HAS_SDIO
 
 #elif defined(STM32PLUS_F427)
   #define STM32PLUS_F4
@@ -127,6 +131,7 @@
   #define STM32PLUS_F4_HAS_OTG_HS
   #define STM32PLUS_F4_HAS_DAC
   #define STM32PLUS_F4_HAS_FMC
+  #define STM32PLUS_F4_HAS_SDIO
 
 #elif defined(STM32PLUS_F429)
   #define STM32PLUS_F4
@@ -147,6 +152,7 @@
   #define STM32PLUS_F4_HAS_OTG_HS
   #define STM32PLUS_F4_HAS_DAC
   #define STM32PLUS_F4_HAS_FMC
+  #define STM32PLUS_F4_HAS_SDIO
 
 #elif defined(STM32PLUS_F437)
   #define STM32PLUS_F4
@@ -167,6 +173,7 @@
   #define STM32PLUS_F4_HAS_OTG_HS
   #define STM32PLUS_F4_HAS_DAC
   #define STM32PLUS_F4_HAS_FMC
+  #define STM32PLUS_F4_HAS_SDIO
 
 #elif defined(STM32PLUS_F439)
   #define STM32PLUS_F4
@@ -188,6 +195,7 @@
   #define STM32PLUS_F4_HAS_OTG_HS
   #define STM32PLUS_F4_HAS_DAC
   #define STM32PLUS_F4_HAS_FMC
+  #define STM32PLUS_F4_HAS_SDIO
 
 #else
   #error "You must define an MCU type. See config/stm32plus.h"

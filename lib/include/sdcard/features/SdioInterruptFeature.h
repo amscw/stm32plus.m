@@ -6,6 +6,7 @@
 
 #pragma once
 
+#ifdef STM32PLUS_F4_HAS_SDIO
 
 /*
  * Forward declare the IRQ handler names
@@ -107,3 +108,5 @@ namespace stm32plus {
     SDIO_ITConfig(interruptMask,DISABLE);
   }
 }
+
+#endif // STM32PLUS_F4_HAS_SDIO
