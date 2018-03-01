@@ -7,6 +7,7 @@
 
 #pragma once
 
+#ifdef STM32PLUS_F4_HAS_SDIO
 
 namespace stm32plus {
 
@@ -57,3 +58,5 @@ namespace stm32plus {
       void onDmaEvent(DmaEventType det);
   };
 }
+
+#endif // STM32PLUS_F4_HAS_SDIO
