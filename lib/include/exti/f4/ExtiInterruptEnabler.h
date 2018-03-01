@@ -179,7 +179,7 @@ namespace stm32plus {
     Nvic::configureIrq(RTC_Alarm_IRQn,DISABLE);
   }
 
-
+#if defined(STM32PLUS_F4_HAS_OTG_HS)
   template<>
   inline void ExtiInterruptEnabler<18>::enable() {
     _forceLinkage=&OTG_FS_WKUP_IRQHandler;
@@ -190,7 +190,7 @@ namespace stm32plus {
   inline void ExtiInterruptEnabler<18>::disable() {
     Nvic::configureIrq(OTG_FS_WKUP_IRQn,DISABLE);
   }
-
+#endif // STM32PLUS_F4_HAS_OTG_HS
 
 #if defined(STM32PLUS_F4_HAS_MAC)
 
