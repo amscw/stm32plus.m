@@ -13,6 +13,8 @@
 #error This class can only be used with the STM32F4 series
 #endif
 
+#ifdef STM32PLUS_F4_HAS_TIM10
+
 namespace stm32plus {
 
   struct TIM10_PinPackage_Remap_None {
@@ -22,7 +24,6 @@ namespace stm32plus {
   struct TIM10_PinPackage_Remap_Full {
     typedef gpio::PF6 TIM10_CH1_Pin;
   };
-
 
   /**
    * Initialise GPIO pins for this timer GPIO mode
@@ -85,3 +86,5 @@ namespace stm32plus {
     }
   };
 }
+
+#endif // STM32PLUS_F4_HAS_TIM10
