@@ -177,7 +177,11 @@ namespace stm32plus {
 
     if((interruptMask & TIM_IT_Update)!=0) {
       _forceLinkage=&TIM1_UP_TIM10_IRQHandler;
+#if !defined(STM32F410xx)
       Nvic::configureIrq(TIM1_UP_TIM10_IRQn,ENABLE,priority,subPriority);
+#else
+      Nvic::configureIrq(TIM1_UP_IRQn,ENABLE,priority,subPriority);
+#endif // STM32F410xx
     }
 
     if((interruptMask & TIM_IT_Break)!=0) {
@@ -196,7 +200,7 @@ namespace stm32plus {
     }
   }
 
-
+#if !defined(STM32F410xx)
   /**
    * Enabler specialisation, timer 2
    * @param interruptMask TIM_* interrupts to be enabled
@@ -237,7 +241,7 @@ namespace stm32plus {
       Nvic::configureIrq(TIM4_IRQn,ENABLE,priority,subPriority);
     }
   }
-
+#endif // STM32F410xx
 
   /**
    * Enabler specialisation, timer 5
@@ -336,7 +340,11 @@ namespace stm32plus {
   inline void TimerInterruptFeatureEnabler<10>::enable(uint16_t interruptMask,uint8_t priority,uint8_t subPriority) {
     if((interruptMask & (TIM_IT_Update | TIM_IT_Trigger | TIM_IT_CC1 | TIM_IT_CC2))!=0) {
       _forceLinkage=&TIM1_UP_TIM10_IRQHandler;
+#if !defined(STM32F410xx)
       Nvic::configureIrq(TIM1_UP_TIM10_IRQn,ENABLE,priority,subPriority);
+#else
+      Nvic::configureIrq(TIM1_UP_IRQn,ENABLE,priority,subPriority);
+#endif // STM32F410xx
     }
   }
 
