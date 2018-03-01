@@ -20,9 +20,12 @@ namespace stm32plus {
   };
 
   struct TIM11_PinPackage_Remap_Full {
-    typedef gpio::PF7 TIM11_CH1_Pin;
+#if !defined(STM32F410xx)
+	typedef gpio::PF7 TIM11_CH1_Pin;
+#else
+	typedef gpio::PC12 TIM11_CH1_Pin;
+#endif
   };
-
 
   /**
    * Initialise GPIO pins for this timer GPIO mode
