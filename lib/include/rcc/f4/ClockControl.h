@@ -260,6 +260,7 @@ namespace stm32plus {
     }
   };
 
+#if !defined(STM32F410xx)
   /**
    * I2S3
    */
@@ -279,6 +280,7 @@ namespace stm32plus {
       RCC_PLLI2SCmd(DISABLE);
     }
   };
+#endif // STM32F410xx
 
   /**
    * USB OTG FS
@@ -336,11 +338,19 @@ namespace stm32plus {
   struct ClockControl<PERIPHERAL_RNG> {
 
     static void On() {
+#if !defined(STM32F410xx)
       RCC_AHB2PeriphClockCmd(RCC_AHB2Periph_RNG,ENABLE);
+#else
+      RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_RNG,ENABLE);
+#endif // STM32F410xx
     }
 
     static void Off() {
-      RCC_AHB2PeriphClockCmd(RCC_AHB2Periph_RNG,DISABLE);
+#if !defined(STM32F410xx)
+      RCC_AHB2PeriphClockCmd(RCC_AHB2Periph_RNG,ENABLE);
+#else
+      RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_RNG,DISABLE);
+#endif // STM32F410xx
     }
   };
 
