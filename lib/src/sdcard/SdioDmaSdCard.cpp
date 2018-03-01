@@ -6,7 +6,7 @@
 
 #include "config/stm32plus.h"
 
-#if defined(STM32PLUS_F1_HD) || defined(STM32PLUS_F4)
+#if defined(STM32PLUS_F1_HD) || (defined(STM32PLUS_F4) && !defined(STM32PLUS_F410))
 
 #include "config/sdcard.h"
 

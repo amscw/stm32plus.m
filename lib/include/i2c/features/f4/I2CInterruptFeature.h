@@ -11,7 +11,7 @@
 #error This class can only be used with the STM32F4 series
 #endif
 
-
+#ifndef STM32PLUS_F410
 /*
  * Forward declare the IRQ handler names
  */
@@ -39,3 +39,5 @@ namespace stm32plus {
     Nvic::configureIrq(I2C3_ER_IRQn,ENABLE,priority,subPriority);
   }
 }
+
+#endif // STM32PLUS_F410
