@@ -75,13 +75,13 @@
 #include "timer/Timer2.h"
 #include "timer/Timer3.h"
 
-#if defined(STM32PLUS_F1) || defined(STM32PLUS_F0) || defined(STM32PLUS_F4_HAS_TIM6_7_8_12_13_14)
-
-  #include "timer/Timer6.h"
+#if defined(STM32PLUS_F1) || defined(STM32PLUS_F0) || defined(STM32PLUS_F4_HAS_TIM7_8_12_13_14)
   #include "timer/Timer14.h"
-
 #endif
 
+#if defined(STM32PLUS_F4_HAS_TIM6)
+  #include "timer/Timer6.h"
+#endif // STM32PLUS_F4_HAS_TIM6
 // MCU-specific timer includes
 
 #if defined(STM32PLUS_F1)
@@ -104,7 +104,7 @@
   #include "timer/f4/Timer10.h"
   #include "timer/f4/Timer11.h"
 
-#if defined(STM32PLUS_F4_HAS_TIM6_7_8_12_13_14)
+#if defined(STM32PLUS_F4_HAS_TIM7_8_12_13_14)
 
   #include "timer/f4/Timer7.h"
   #include "timer/f4/Timer8.h"
