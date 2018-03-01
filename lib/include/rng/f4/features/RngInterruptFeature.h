@@ -11,7 +11,6 @@
 #error This class can only be used with the STM32F4 series
 #endif
 
-
 /**
  * Forward declare the IRQ handler name
  */
@@ -42,7 +41,8 @@ namespace stm32plus {
 
   inline void RngInterruptFeatureEnabler::enable(uint8_t priority,uint8_t subPriority) {
     _forceLinkage=&HASH_RNG_IRQHandler;
-    Nvic::configureIrq(HASH_RNG_IRQn,ENABLE,priority,subPriority);
+    // FIXME: для F410-ого камня нет такого вектора
+    // Nvic::configureIrq(HASH_RNG_IRQn,ENABLE,priority,subPriority);
   }
 
 
