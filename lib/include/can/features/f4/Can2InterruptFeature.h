@@ -11,6 +11,7 @@
 #error This class can only be used with the STM32F4 series
 #endif
 
+#ifdef (STM32PLUS_F4_HAS_CAN)
 
 /*
  * Forward declare the IRQ handler names
@@ -133,3 +134,5 @@ namespace stm32plus {
     CAN_ClearITPendingBit(_can,interruptMask);
   }
 }
+
+#endif // STM32PLUS_F4_HAS_CAN
